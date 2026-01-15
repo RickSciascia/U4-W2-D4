@@ -42,29 +42,30 @@ public class Application {
 // ARRAY ORDINI
         ArrayList<Order> allOrders = new ArrayList<>(List.of(o1,o2,o3,o4,o5));
 //        ESERCIZI
-        System.out.println("Esercizio 1");
-        Map<Customer,List<Order>> orderByCustomers = allOrders.stream().collect(Collectors.groupingBy(order -> order.getCustomer()));
-        System.out.println(orderByCustomers);
+//        System.out.println("Esercizio 1");
+//        Map<Customer,List<Order>> orderByCustomers = allOrders.stream().collect(Collectors.groupingBy(order -> order.getCustomer()));
+//        System.out.println(orderByCustomers);
 
-//        System.out.println("Esercizio 2");
-//        Map<Customer, Double> totalByCustomer = allOrders.stream()
-//                .collect(Collectors.groupingBy(order -> order.getCustomer(),
-//                        Collectors.summingDouble(order -> order.getProductsList().stream()
-//                                .mapToDouble(product-> product.getPrice())
-//                                .sum())));
-//        totalByCustomer.forEach((customer, total) -> System.out.println("Cliente:" + customer.getName() + " Totale: "+ total));
+
+        System.out.println("Esercizio 2");
+        Map<Customer, Double> totalByCustomer = allOrders.stream()
+                .collect(Collectors.groupingBy(order -> order.getCustomer(),
+                        Collectors.summingDouble(order -> order.getProductsList().stream()
+                                .mapToDouble(product-> product.getPrice())
+                                .sum())));
+        totalByCustomer.forEach((customer, total) -> System.out.println("Cliente:" + customer.getName() + " Totale: "+ total));
 //
 //        System.out.println("Esercizio 3");
 //        List<Product> sortedProductByHigherPrice = storeList.stream().sorted(Comparator.comparing(Product::getPrice).reversed()).toList();
 //        sortedProductByHigherPrice.forEach(product -> System.out.println("Prodotto: " + product.getName() + " Prezzo: " + product.getPrice() + " $"));
 
-        System.out.println("Esercizio 4");
-        Map<Customer, Double> avgTotal = allOrders.stream()
-                .collect(Collectors.groupingBy(order -> order.getCustomer(),
-                Collectors.summingDouble(order->order.getProductsList().stream()
-                .mapToDouble(product-> product.getPrice())
-                .average().getAsDouble())));
-        avgTotal.forEach((customer, avgDouble) -> System.out.println("Cliente: " + customer.getName() + " Media ordini: " + avgDouble));
+//        System.out.println("Esercizio 4");
+//        Map<Customer, Double> avgTotal = allOrders.stream()
+//                .collect(Collectors.groupingBy(order -> order.getCustomer(),
+//                Collectors.summingDouble(order->order.getProductsList().stream()
+//                .mapToDouble(product-> product.getPrice())
+//                .average().getAsDouble())));
+//        avgTotal.forEach((customer, avgDouble) -> System.out.println("Cliente: " + customer.getName() + " Media ordini: " + avgDouble));
 
     }
 }
